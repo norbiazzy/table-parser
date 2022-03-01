@@ -1,6 +1,8 @@
 const express = require('express');
+const fileUpload = require('express-fileupload')
 
 const app = express();
+app.use(fileUpload({}))
 app.use(express.json({extended: true}))
 app.use('/api/parser', require('./parser'))
 

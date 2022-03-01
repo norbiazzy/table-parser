@@ -5,12 +5,17 @@ let XLSX = require("xlsx");
 // /api/parser/
 router.post('/', async (req, res) => {
     try {
-        let {file} = req.body
-        let data = await file.arrayBuffer()
+        let {file} = req.files
+        const workbook = XLSX.read(file.data);
+        return res.json({data: workbook.Sheets})
+    } catch (e) {
+        console.log(e, 'error')
+    }
+})
 
-        const workbook = XLSX.read(data);
-        console.log(workbook)
-
+router.get('/', async (req, res) => {
+    try {
+        return res.json({asd:321})
     } catch (e) {
         console.log(e, 'error')
     }
