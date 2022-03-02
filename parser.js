@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
         return res.json({data: workbook.Sheets})
     } catch (e) {
         console.log(e, 'error')
-        return res.status(500).json({message: 'dont work'})
+        return res.status(400).json({message: 'bad request'})
     }
 })
 
